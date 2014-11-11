@@ -1,0 +1,11 @@
+Grade: 102/100
+
+Comments:
+	+2: For good SELECT querries
+
+Note that you just need to put your comments between /* Comment */, do not need to SELECT them out. 
+	
+	
+	
+	
+	

@@ -1,0 +1,46 @@
+SELECT *
+FROM Hashtag;
+
+SELECT AVG(currentTrend)
+FROM Hashtag;
+
+SELECT label, MIN(currentTrend)
+FROM Hashtag
+GROUP BY currentTrend, label;
+
+SELECT *
+FROM Follow;
+
+SELECT userNameFollowed, COUNT(userNameFollow)
+FROM Follow
+WHERE userNameFollowed = 'user2';
+
+SELECT userNameFollowed, COUNT(userNameFollow)
+FROM Follow
+GROUP BY userNameFollowed;
+
+SELECT 'Find your (user2) first tweet' as '';
+SELECT content, min(tweetTime)
+FROM Tweet
+WHERE writerName = 'user2';
+
+
+SELECT 'Active users:' as '';
+SELECT writerName
+FROM Tweet
+GROUP BY writerName
+HAVING COUNT(*) > 0;
+
+SELECT 'Super active users (send more than ten tweets):' as '';
+SELECT writerName
+FROM Tweet
+GROUP BY writerName
+HAVING COUNT(*) > 10;
+
+SELECT 'Super active users (send more than four tweets) or users followed by other users:' as '';
+SELECT writerName
+FROM Tweet
+GROUP BY writerName
+HAVING COUNT(*) > 4
+OR writerName IN (SELECT userNameFollowed
+		  FROM Follow);

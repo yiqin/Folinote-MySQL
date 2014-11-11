@@ -1,0 +1,46 @@
+Twitter Basic Plus App Description
+
+The app has two primary entries - Users and Tweets.
+
+# User
+The user has the setting, which includes the userName, the email, the photo profile, the language and the time zone. The key of the user is the userName. In our system, there are no two same usernames.
+
+# Tweet
+The tweet includes the content, which is what the tweet says. We have two options for the key. One is  Since the content of the tweet could be the same and could even be sent by the same user, we use uniqueID for the key of the tweet. The other is to use weak entity sets. The tweet can be only send a user. It's obviously a weak entity set. One use is not able to send two tweets at the exactly same time. So the time and the username could be the key.
+
+
+Based on these two entries, we can build many advanced features.
+1. The user can send a tweet. This is a weak entity set for the user and the tweet.
+
+2. The user has the following list and followers list. 
+
+3. The tweet can @username. For example, "@ProductHunt is making me do crazy things. Namely buying loads of interesting stuff I don't need." ProductHunt is a username, and the tweet could @ it. 
+
+4. The tweet has hashtags. For example, "The #GoogleMaps app simplifies mass transit directions. Minding the gap is still on you." #GoogleMaps is a hashtags.
+
+5. The tweet has at most one photo.
+
+6. The user can even post the location in the tweet. When I send a message, I can choose to post location, which is "Chicago, IL". It's a general location, rather than the coordiante numbers.
+
+7. The user can select tweets as favorites. 
+
+
+From the advanced features, we can tell several entities are needed in the app.
+
+# Hashtag
+The hashtag has two attributes. One is label, and the other one is currentTrend. The currentTrend indicates the current ranking. The key is label.
+
+# Location
+The location has the placeName, and the coordinate numbers.
+
+
+
+That's it for now.
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+Grade: 45/50
+
+Comments:
+    
+    -1: You mentioned in your description that Entity "User" has a Username as its PK. I don't see that in your ERD. (Should Name not be a PK since it can be changed?)
+    0: I believe that attribute "profile" is ProfilePhoto that you mentioned in your description file.
+    -1: Relationship "Follow" should be many-many. BTW, you didn't explain which relationships are many-many or 1-many or 1-1.
+    -1: Relationship "Favorite" should be many-many
+    -1: What does "At" relationship mean?
+    -1: Relationship "Tweet" has "Hashtag" should be 1 to many since a tweet can have many hashtags.
+    
+Suggestions:
+    Locaion should has by longitude and latitude. I suggest you use an ID attribute and replace Coordinate with longitude and latitude, it's easier to manage.
+    

@@ -1,0 +1,27 @@
+Note that __ indicates underline.
+
+User(__name, timezone, language, email, profile)
+Tweet(__time, __userName, content)
+Hashtag(__label, currentTrend)
+Location(__coordinate, placeName)
+
+Follow(userName1, userName2)
+At(userName, tweetTime)
+Favorite(userName, tweetTime)
+Hash(hashtagLabel, tweetTime)
+In(locationCoordiante, tweetTime)
+
+# User
+username -> timezone
+username -> language
+username -> email
+username -> profile
+
+# Tweet
+time userName -> content
+
+# Hashtag
+label -> currentTrend
+
+# Location
+coordinate ->placeName
