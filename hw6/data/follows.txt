@@ -1,4 +1,4 @@
-(userNameFollow, userNameFollowed)
+(username_leader, username_follower)
 user2, user5
 user2, user1
 user2, user4

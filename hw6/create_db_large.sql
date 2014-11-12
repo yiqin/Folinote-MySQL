@@ -1,8 +1,10 @@
+/* Drop class first.*/
 DROP TABLE User;
 DROP TABLE Tweet;
+DROP TABLE Follow;
+
 DROP TABLE Hashtag;
 DROP TABLE Location;
-DROP TABLE Follow;
 DROP TABLE At;
 DROP TABLE Favorite;
 DROP TABLE Hash;
@@ -17,10 +19,16 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Tweet (
+	tweetID int PRIMARY KEY,
 	tweetTime datetime,
 	writerName varchar(255),
-	content varchar(255),
-	PRIMARY KEY(tweetTime, writerName)
+	content varchar(255)
+);
+
+CREATE TABLE Follow(
+	username_leader varchar(255),
+	username_follower varchar(255),
+	PRIMARY KEY(username_leader, username_follower)
 );
 
 CREATE TABLE Hashtag(
@@ -35,11 +43,6 @@ CREATE TABLE Location(
 	PRIMARY KEY(coordinateX, coordinateY)
 );
 
-CREATE TABLE Follow(
-	userNameFollow varchar(255),
-	userNameFollowed varchar(255),
-	PRIMARY KEY(userNameFollow, userNameFollowed)
-);
 
 CREATE TABLE At(
 	userName varchar(255),

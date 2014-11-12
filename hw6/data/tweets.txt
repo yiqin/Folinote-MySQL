@@ -1,7 +1,7 @@
-tweetTime, writerName, content
-2014-10-23 15:31:06, user1, Homeworking now
-2014-10-23 15:31:36, user1, Homework is too difficult
-2014-10-23 15:51:06, user1, Weekend is coming
-2014-10-23 15:31:06, user1, Homeworking now
-2014-10-23 15:31:07, user2, Homeworking now
-2014-10-23 15:31:08, user3, Homeworking now
+tweetID, writerName, content, tweetTime
+1, user1, Homeworking now, 
+2, user1, Homework is too difficult, 
+3, user1, Weekend is coming, 
+4, user1, Homeworking now, 
+5, user2, Homeworking now, 
+6, user3, Homeworking now, 
