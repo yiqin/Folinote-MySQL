@@ -31,17 +31,6 @@ GROUP BY writerName
 HAVING COUNT(*) > 4;
 
 /*5*/
-/*Find users who send more tweets than the number of tweets sent by user1*/
-SELECT COUNTUser.writerName, COUNTUser.COUNTTweets
-FROM (SELECT writerName, COUNT(writerName) As COUNTTweets
-FROM Tweet
-GROUP BY writerName) AS COUNTUser
-WHERE COUNTUser.COUNTTweets > 
-(SELECT COUNT(writerName)
-FROM Tweet
-WHERE writerName = 'user1');
-
-/*6*/
 /*Find the tweets favorated by at least two user.*/
 SELECT Tweet.writerName, Tweet.tweetID, Tweet.content, COUNTFavoriteTweet.favoriteNumber
 FROM Tweet JOIN (SELECT tweetID AS favorateTweetID, COUNT(TweetID) AS favoriteNumber
@@ -51,19 +40,61 @@ HAVING (COUNT(TweetID))>1
 ) AS COUNTFavoriteTweet
 ON Tweet.tweetID = COUNTFavoriteTweet.favorateTweetID;
 
+/*6*/
+/*Find the user who wrote at least one tweet and has at least one follower*/
+SELECT DISTINCT U.name
+FROM User U
+INNER JOIN Tweet T ON T.writerName = U.name
+INNER JOIN Follow F ON F.username_leader = U.name;
+
 /*7*/
-/*Find the user (name) who tweet most.*/
-SELECT tweetID, writerName AS name, content, COUNT(writerName) AS tweetNumber
+/*Find all user who follow one of user3377's leader*/
+SELECT DISTINCT username_follower
+FROM Follow f
+JOIN (SELECT username_leader
+FROM Follow
+WHERE username_follower = 'user3377') User1Follows
+ON f.username_follower = User1Follows.username_leader;
+
+/*8*/
+/*Find the tweets that is sent by the user (name) who tweet most.*/
+SELECT Tweet.writerName, Tweet.tweetID, Tweet.content
+FROM Tweet JOIN
+(SELECT writerName, COUNT(writerName)
 FROM Tweet
-GROUP BY(writerName);
- 
-
-/*
-HAVING (COUNTWriterName.tweetNumber) = MAX(COUNTWriterName.tweetNumber);
-*/
-
-
-SELECT Tweet.content
+GROUP BY writerName
+HAVING COUNT(writerName) >= ALL
+(SELECT COUNT(writerName)
 FROM Tweet
-WHERE writerName = 'user1';
+GROUP BY writerName) ) AS MostActiveUser
+ON (Tweet.writerName = MostActiveUser.writerName);
+
+/*9*/
+/*Find the tweets that is sent by the user (name) who have the most followers*/
+SELECT Tweet.writerName, Tweet.tweetID, Tweet.content
+FROM Tweet JOIN
+(SELECT username_leader AS name, COUNT(username_leader)
+FROM Follow
+GROUP BY username_leader
+HAVING COUNT(username_leader) >= ALL
+(SELECT COUNT(username_leader)
+FROM Follow
+GROUP BY username_leader) ) AS MostFollowerUser
+ON (Tweet.writerName = MostFollowerUser.name);
+
+/*10*/
+/*Find all followers of the user who sent the most favorite tweet.*/
+SELECT username_follower
+FROM Follow
+WHERE username_leader =
+(SELECT Tweet.writerName
+FROM Tweet JOIN
+(SELECT tweetID, COUNT(tweetID)
+FROM Favorite
+GROUP BY tweetID
+HAVING COUNT(tweetID) >= ALL
+(SELECT COUNT(tweetID)
+FROM Favorite
+GROUP BY tweetID)) AS MostFavoriteTweet
+ON (Tweet.tweetID = MostFavoriteTweet.tweetID));
 
