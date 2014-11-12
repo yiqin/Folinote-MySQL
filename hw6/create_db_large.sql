@@ -29,6 +29,13 @@ CREATE TABLE Follow(
 	PRIMARY KEY(username_leader, username_follower)
 );
 
+CREATE TABLE Favorite(
+	userName varchar(255),
+	tweetID int,
+	PRIMARY KEY(userName, tweetID)
+);
+
+
 CREATE TABLE Hashtag(
 	label varchar(255) PRIMARY KEY,
 	currentTrend real
@@ -43,13 +50,6 @@ CREATE TABLE Location(
 
 
 CREATE TABLE At(
-	userName varchar(255),
-	tweetTime datetime,
-	writerName varchar(255),
-	PRIMARY KEY(userName, tweetTime, writerName)
-);
-
-CREATE TABLE Favorite(
 	userName varchar(255),
 	tweetTime datetime,
 	writerName varchar(255),

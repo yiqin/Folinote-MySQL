@@ -21,6 +21,14 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (username_leader, username_follower);
 
+LOAD DATA LOCAL INFILE 'data/favorites.txt'
+REPLACE INTO TABLE Favorite
+FIELDS TERMINATED BY '	'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(userName, tweetID);
+
+
 LOAD DATA LOCAL INFILE 'data/hashtags.txt'
 REPLACE INTO TABLE Hashtag
 FIELDS TERMINATED BY ', '
@@ -35,10 +43,4 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (userName, tweetTime, writerName);
 
-LOAD DATA LOCAL INFILE 'data/favorites.txt'
-REPLACE INTO TABLE Favorite
-FIELDS TERMINATED BY ', '
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(userName, tweetTime, writerName);
 

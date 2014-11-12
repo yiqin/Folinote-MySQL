@@ -10,3 +10,4 @@ FROM Follow;
 SELECT COUNT(name) FROM User;
 SELECT COUNT(TweetID) FROM Tweet;
 SELECT COUNT(*) FROM Follow;
+SELECT COUNT(*) FROM Favorite;
