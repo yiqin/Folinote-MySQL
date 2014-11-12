@@ -2,21 +2,21 @@ SHOW TABLES;
 
 LOAD DATA LOCAL INFILE 'data/users.txt'
 REPLACE INTO TABLE User
-FIELDS TERMINATED BY ', '
+FIELDS TERMINATED BY '	'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(name, timezone, language, email, profile);
+(name, timezone, language, email);
 
 LOAD DATA LOCAL INFILE 'data/tweets.txt'
 REPLACE INTO TABLE Tweet
-FIELDS TERMINATED BY ', '
+FIELDS TERMINATED BY '	'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(tweetID, writerName, content, tweetTime);
+(tweetID, writerName, content);
 
 LOAD DATA LOCAL INFILE 'data/follows.txt'
 REPLACE INTO TABLE Follow
-FIELDS TERMINATED BY ', '
+FIELDS TERMINATED BY '	'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (username_leader, username_follower);

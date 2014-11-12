@@ -14,13 +14,11 @@ CREATE TABLE User (
 	name varchar(255) PRIMARY KEY,
 	timezone varchar(255),
 	language varchar(255),
-	email varchar(255),
-	profile BLOB
+	email varchar(255)
 );
 
 CREATE TABLE Tweet (
 	tweetID int PRIMARY KEY,
-	tweetTime datetime,
 	writerName varchar(255),
 	content varchar(255)
 );
