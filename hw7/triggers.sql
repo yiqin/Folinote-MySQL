@@ -13,7 +13,7 @@ CREATE TRIGGER TweetLengthInsertTrigger
 		IF (char_length(NEW.content) > 20 ) THEN
 			SET NEW.content = SUBSTRING(NEW.content, 1, 20);
 		END IF;
-	END$$
+	END $$
 DELIMITER ;
 
 
@@ -29,7 +29,7 @@ CREATE TRIGGER UserNameInsertTrigger
 		IF (NEW.name = ANY (SELECT name FROM User)) THEN
 			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Duplicate insert. Please choose another username';
 		END IF;
-	END$$
+	END $$
 DELIMITER ;
 
 
@@ -46,7 +46,7 @@ CREATE TRIGGER UserNameDeleteTrigger
 		WHERE username_follower = OLD.name;
 		DELETE FROM Follow
 		WHERE username_leader = OLD.name;
-	END$$
+	END $$
 DELIMITER ;
 
 

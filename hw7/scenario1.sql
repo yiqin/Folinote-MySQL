@@ -1,3 +1,4 @@
+START TRANSACTION;
 /* 1 */
 /* Just show latest tweets. */
 SELECT * FROM Tweet
@@ -67,3 +68,6 @@ WHERE name = 'user8251';
 SELECT * FROM Follow
 WHERE username_leader = 'user8251'
 OR username_follower = 'user8251';
+
+
+ROLLBACK;
