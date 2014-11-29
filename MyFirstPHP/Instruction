@@ -1,0 +1,5 @@
+scp list_tables.php yiqin@linux.cs.uchicago.edu:
+
+mv list_tables.php /stage/cgi-cspp/yiqin/public_html
+
+chmod -R a+rX /stage/cgi-cspp/yiqin/public_html/
