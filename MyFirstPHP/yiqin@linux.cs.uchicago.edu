@@ -15,7 +15,7 @@ print 'Connected successfully!<br>';
 $user = $_REQUEST['user'];
 
 // Get the attributes of the user with the given username
-$query = "SELECT email, name FROM User WHERE name = 'user1'"; // Update here.
+$query = "SELECT email, full_name, gender, age FROM Users WHERE username = '$user'";
 $result = mysqli_query($dbcon, $query)
   or die('Query failed: ' . mysqli_error($dbcon));
 
